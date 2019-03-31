@@ -1,0 +1,11 @@
+type Company {
+  id: ID!
+  name: String!
+  country: String!
+}
+
+type Query {
+  hello(name: String): String!
+  companies: [Company]!
+  company(id: ID!): Company
+}

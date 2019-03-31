@@ -1,0 +1,29 @@
+{
+  "name": "graphql-functions",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "deploy": "gcloud beta functions deploy api2 --trigger-http --entry-point='api' --runtime='nodejs8' --env-vars-file='secrets.yml' --memory='128MB'",
+    "local": "functions deploy api2 --trigger-http --entry-point='api'"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/ramda": "^0.26.5",
+    "prettier": "1.16.4",
+    "typescript": "^3.4.1"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "^1.2.0",
+    "apollo-server-express": "^2.4.8",
+    "express": "^4.16.4",
+    "graphql": "^14.2.0",
+    "graphql-import": "^0.7.1",
+    "graphql-middleware": "^3.0.2",
+    "graphql-shield": "^5.3.1",
+    "jsonwebtoken": "^8.5.1",
+    "ramda": "^0.26.1"
+  }
+}
