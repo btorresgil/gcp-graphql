@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc --watch",
-    "deploy": "gcloud beta functions deploy api2 --trigger-http --entry-point='api' --runtime='nodejs8' --env-vars-file='secrets.yml' --memory='128MB'",
+    "deploy": "gcloud beta functions deploy api2 --trigger-http --entry-point='api' --runtime='nodejs8' --memory='128MB'",
     "local": "functions deploy api2 --trigger-http --entry-point='api'"
   },
   "devDependencies": {

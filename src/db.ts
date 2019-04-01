@@ -11,16 +11,19 @@ export const companies = db.collection('companies')
 
 // Functions
 
-export const existing = filter(propEq('exists', true))
+export const exists = propEq('exists', true)
+export const onlyExists = filter(exists)
+export const dataWithId = (snapshot: any) => ({
+  id: snapshot.id,
+  ...snapshot.data(),
+})
 
 export const getAllData = async (docRefs: any[]) => {
-  const docSnapshots = existing(await db.getAll(docRefs))
-  const docs = map((d: any) => ({ id: d.id, ...d.data() }))(docSnapshots)
-  return docs
+  const docSnapshots = onlyExists(await db.getAll(docRefs))
+  return map(dataWithId, docSnapshots)
 }
 
 export const getData = async (docRef: any) => {
   const docSnapshot = await docRef.get()
-  const doc = { id: docSnapshot.id, ...docSnapshot.data() }
-  return doc
+  return dataWithId(docSnapshot)
 }
